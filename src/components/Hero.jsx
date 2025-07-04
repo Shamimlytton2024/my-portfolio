@@ -11,6 +11,7 @@ import {
   SiGit,
   SiGithub,
 } from "react-icons/si";
+import { FaCode } from "react-icons/fa";
 
 const Hero = () => {
   return (

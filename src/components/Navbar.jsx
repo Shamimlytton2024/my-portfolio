@@ -7,6 +7,7 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
   ];
@@ -22,10 +23,7 @@ const Navbar = () => {
         <ul className="hidden md:flex space-x-6 text-gray-800 dark:text-white font-medium">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="hover:text-indigo-600 transition"
-              >
+              <a href={link.href} className="hover:text-indigo-600 transition">
                 {link.label}
               </a>
             </li>

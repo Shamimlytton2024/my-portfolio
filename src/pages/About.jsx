@@ -1,25 +1,66 @@
-// components/About.jsx
+import React, { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 
-import React from "react";
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
-const About = () => {
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+  ];
+
   return (
-    <section id="about" className="bg-gray-100 dark:bg-gray-900 py-20">
-      <div className="container mx-auto px-6 max-w-4xl text-center">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          About Me
-        </h2>
+    <nav className="bg-white dark:bg-gray-900 shadow-md fixed top-0 w-full z-50">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#home" className="text-2xl font-bold text-indigo-600">
+          Shamim Lytton
+        </a>
 
-        <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-          I'm <span className="font-semibold text-indigo-600">Shamim Lytton</span>, a passionate Full-Stack Developer from Kenya. I love building clean, user-friendly web applications using modern technologies like Python, Flask, React, and Tailwind CSS.
-        </p>
+        {/* Desktop Links */}
+        <ul className="hidden md:flex space-x-6 text-gray-800 dark:text-white font-medium">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a href={link.href} className="hover:text-indigo-600 transition">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-        <p className="text-gray-700 dark:text-gray-400">
-          I have experience with both frontend and backend development, and I enjoy bringing ideas to life through clean code and thoughtful design. Whether it's a full product or a quick MVP, I aim to solve real-world problems with practical solutions.
-        </p>
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            className="text-gray-800 dark:text-white focus:outline-none"
+          >
+            {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </div>
       </div>
-    </section>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden px-6 pb-4">
+          <ul className="space-y-3 text-gray-800 dark:text-white font-medium">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block hover:text-indigo-600 transition"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 };
 
-export default About;
+export default Navbar;

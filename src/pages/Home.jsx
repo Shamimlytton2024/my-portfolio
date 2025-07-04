@@ -8,12 +8,23 @@ import Contact from "./Contact";
 
 const Home = () => {
   return (
-    <div id="home">
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-    </div>
+    <main id="home" className="scroll-smooth">
+      <section id="hero">
+        <Hero />
+      </section>
+
+      <section id="about">
+        <About />
+      </section>
+
+      <section id="projects">
+        <Projects />
+      </section>
+
+      <section id="contact">
+        <Contact />
+      </section>
+    </main>
   );
 };
 
